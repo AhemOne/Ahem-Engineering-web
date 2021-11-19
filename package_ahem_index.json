@@ -1,0 +1,35 @@
+{
+  "packages": [
+    {
+      "name": "Localhost",
+      "maintainer": "Ahem Engineering",
+      "websiteURL": "https://www.ahem.net.au",
+      "email": "arduino@ahem.net.au",
+      "help": {
+        "online": "https://www.ahem.net.au/wiki/"
+      },
+      "platforms": [
+        {
+          "category": "Contributed",
+          "name": "Blank None",
+          "url": "",
+          "version": "1.0.0",
+          "architecture": "localhost",
+          "archiveFileName": "",
+          "help": {
+            "online": "https://www.ahem.net.au/wiki/localhost/"
+          },
+          "size": "0",
+          "checksum": "SHA-256:88579fb05bb7fda0b09bfbb325abd0eea15e51e9b09d57bd9eb0ff8c51af5bf1",
+          "boards": [
+            {
+              "name": "local"
+            }
+          ],
+          "toolsDependencies": []
+        }
+      ],
+      "tools": []
+    }
+  ]
+}
