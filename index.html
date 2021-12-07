@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     
     <!-- scripts -->
+    <script language="javascript">
+      document.getElementById("page-copyright-year").innerHTML = Date().getFullYear();
+    </script>
     <script type="application/javascript" language="javascript" src="base.json"></script> 
 
   </head>
@@ -25,10 +28,8 @@
     <div id="footer" class="page-banner">
       <center>
         &copy 
-        <span> 
-          <!--#config timefmt="%Y" -->
-          <!--#echo var="DATE_LOCAL" -->
-        </span>
+        
+        <span id="page-copyright-year" />
         Ahem Engineering (Australia)
       </center>
     </div>
