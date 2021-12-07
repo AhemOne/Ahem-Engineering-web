@@ -1,1 +1,10 @@
+body {
+  background-color: lightblue;
+}
 
+page-banner {
+  @keyframes mymove {
+    from {background-color: red;}
+    to {background-color: blue;}
+  }
+}
