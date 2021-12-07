@@ -3,10 +3,11 @@ body {
 }
 
 page-banner {
-  animation: mymove 5s infinite;
+  background: red;
+  animation: fade-page-banner 5s infinite;
 }
   
-@keyframes mymove {
+@keyframes fade-page-banner {
   from {background-color: red;}
   to {background-color: blue;}
 }
