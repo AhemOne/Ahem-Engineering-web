@@ -8,8 +8,10 @@
     
     <!-- scripts -->
     <script language="javascript">
-      var date = new Date();
-      document.getElementById("page-copyright-year").innerHTML = date.getFullYear();
+      function update_copyright_year() {
+        var date = new Date();
+        document.getElementById("page-copyright-year").innerHTML = date.getFullYear();
+      }
     </script>
     <script type="application/javascript" language="javascript" src="base.json"></script> 
 
@@ -34,4 +36,8 @@
       </center>
     </div>
   </body>
+<!-- post load scripts -->
+<script language="javascript">
+  update_copyright_year();
+</script>
 </html>
