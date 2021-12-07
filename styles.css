@@ -3,11 +3,11 @@ body {
 }
 
 page-banner {
-  background: red;
+  background: lightBlue;
   animation: fade-page-banner 5s infinite;
 }
   
 @keyframes fade-page-banner {
-  from {background-color: red;}
-  to {background-color: blue;}
+  from {background-color: lightBlue;}
+  to {background-color: white;}
 }
