@@ -1,0 +1,18 @@
+{
+  "favicon": {
+    "loc": "AhemIcon.ico",
+    "alt": ""
+  },
+  "icon": {
+    "loc": "AhemIcon.png",
+    "alt": ""
+  },
+  "logo": {
+    "loc": "AhemEngineeringLogo.png",
+    "alt": "Ahem Engineering, Australia"
+  },
+  "banner": {
+    "loc": "CardIObyAhemEngineeringLogo.png",
+    "alt": "CardIO by Ahem Engineering"
+  }
+}  
