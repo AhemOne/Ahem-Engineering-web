@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head> 
+    <!-- page metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS external objects -->
+
+    <!-- JS external scripts -->
+
+    <!-- CSS stylesheets -->
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+
+    <!-- local scripts -->
+    <script language="javascript">
+      var ext = [];
+      function place_year(element_id) {
+        var date = new Date();
+        document.getElementById(element_id).innerHTML = date.getFullYear();
+      }
+    </script> 
+
+    <script language="javascript">
+      function get_image(tag) {
+        return "assets/img/" + ext["images"][tag]["loc"];
+      }
+
+      function get_alt(tag) {
+        return ext["images"][tag]["alt"]
+      }
+
+      var active_page = "shop";
+
+      function set_page_active(str) {
+        var button_basename = "header-button";
+        var old_button_name = button_basename + "-" + active_page;
+        var new_button_name = button_basename + "-" + str;
+
+        document.getElementById("body-content").src = ext["pages"][str];
+        document.getElementById(old_button_name).className = button_basename;
+        document.getElementById(new_button_name).className = button_basename + " active";
+        active_page = str;
+      }
+
+      function set_image_by_id(id, tag) {
+        var element = document.getElementById(id);
+        console.log("setting id " + id + " to [" + tag + "]");
+
+        element.src = get_image(tag);
+        element.alt = get_alt(tag);
+        console.log("found " + element.src + " (" + element.alt + ")");
+      }
+    </script>
+
+    <!-- title bar -->
+    <title>Ahem Engineering, Australia [Sitemap]</title>
+    <link rel="icon" type="image/png" href="assets/img/AhemIcon.png" sizes="any">
+  </head>
+
+  <body>
+    <!-- header, contains 'Ahem Engineering' logo -->
+    <div class="header-container">
+      <table width="100%" height="120px">
+        <tr>
+          <th style="width:200px;text-align:left">  
+            <a href="index.html">
+              <img class="icon-image" alt="menu" src="assets/img/icon-home.png">
+            </a>
+          </th>
+          <th>
+            <a href="https://www.ahem.net.au">
+              <img class="menu-image" src="assets/img/AhemEngineeringLogo.png" height="90px">
+            </a>
+          </th>
+          <th style="width:200px;text-align:right">
+            <a>
+              <img class="icon-image" alt="cart" src="assets/img/icon-cart.png">
+            </a>
+            <a>
+              <img class="icon-image" alt="login" src="assets/img/icon-guest.png">
+            </a>
+          </th>
+        </tr>
+        <tr>
+          <th colspan=3 style="height:30px; padding:0px">
+            <center>
+              <div class="subnet-container" width="100%">
+                <a id="header-button-sitemap" class="header-button active" onclick="set_page_active('shop')">Sitemap</a>
+                
+              </div>
+            </center>
+          </th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="contents">
+      <div width="100%">
+        <dl>
+          <dt><a href="blog.html">blog</a></dt>
+          <dt><a href="forum.html">forum</a></dt>
+          <dt><a href="shop.html">shop</a></dt>
+          <dt><a href="support.html">support</a></dt>
+            <dd><a href="sitemap.html">sitemap</a></dd>
+            <dd><a href="asset_legal.html">legal</a></dd>
+          <dt><a href="wiki.html">wiki</a></dt>
+        </dl>
+      </div>
+      <div id="footer" class="page-banner">
+        <center>
+          &copy <span id="page-copyright-year">2021</span> Ahem Engineering (Australia)
+        </center>
+      </div>
+    </div>
+    <div id="complete-requests" class="variable">0</div>
+  </body>
+  
+  <!-- post load scripts -->
+  <script language="javascript">
+    
+    function parse_page(data) {
+      console.log("parsing page:");
+      console.log(data); 
+      
+      set_page_active('shop');
+    }
+        
+    function perform_json_requests() {
+      request_urls = document.getElementsByClassName('json-request');      
+      request = [];
+      document.getElementById('complete-requests').innerHTML = 0;
+      
+      for (i = 0; i < request_urls.length; i++) {
+        request[i] = new XMLHttpRequest();
+        request[i].onload = function() {
+          current_requests = document.getElementsByClassName('json-request');
+          
+          for (i = 0; i < current_requests.length; i++) {
+            if (!current_requests[i].src.localeCompare(this.responseURL)) { 
+              
+              complete_requests = document.getElementById('complete-requests');
+              complete = Number(complete_requests.innerHTML);
+              complete_requests.innerHTML = ++complete;
+              request_tag = current_requests[i].id;
+              current_requests[i].id += "-loaded";
+              
+              console.log("completed " + complete + " requests and setting tag to: " + request_tag);
+              current_requests[i].innerHTML = this.responseText;
+              ext[request_tag] = JSON.parse(this.responseText);
+              
+              if (complete == request_urls.length) {
+                parse_page(ext);
+                return;
+              }
+            }
+          }
+          
+          
+        }
+        request[i].open("GET", request_urls[i].src, true);
+        console.log("requesting: " + i);
+        request[i].send();
+      }
+    }
+    
+    perform_json_requests();
+    place_year("page-copyright-year");
+    
+  </script>
+</html>

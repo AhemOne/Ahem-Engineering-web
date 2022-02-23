@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <script language="javascript">
+      var page_data = [
+        {
+          date: {
+            day: 10,
+            month: 12,
+            year: 2021
+          },
+          Title: "first blog post!",
+          Author: "Jesse Falzon",
+          Content: "this is my blog Monday"
+        },
+        {
+          date: {
+            day: 11,
+            month: 12,
+            year: 2021
+          },
+          Title: "second blog post!",
+          Author: "Jesse Falzon",
+          Content: "this is my blog Tuesday"
+        },
+        {
+          date: {
+            day: 12,
+            month: 12,
+            year: 2021
+          },
+          Title: "third blog post!",
+          Author: "Jesse Falzon",
+          Content: "this is my blog Wednesday"
+        },
+        {
+          date: {
+            day: 13,
+            month: 12,
+            year: 2021
+          },
+          Title: "fourth blog post!",
+          Author: "Jesse Falzon",
+          Content: "this is my blog Thursday"
+        }
+      ];
+    </script>
+    
+    <template id="blog-post-template">
+      
+      <article>
+        <h2 class="title">title</h2>
+        <div class="byline">By: <span class="author">author</span></div>
+        <div class="content">lorem ipsum</div>
+      </article>
+      
+    </template>
+    
+    <style>
+      article .title {
+        background-color: darkgreen;
+      }
+      
+      article .byline {
+        background-color: lime;
+      }
+      
+      article .content {
+        background-color: red;
+      }
+    </style>
+    
+  </head>
+  <body style="text-align:center">
+    <h1>Welcome to the blog!</h1>
+    <div id="post-listing">
+      
+    </div>
+  </body>
+  
+  <script>
+    tmpl = document.getElementById('blog-post-template');
+    page_content = document.getElementById('post-listing');
+    
+    console.log("found " + page_data.length + " articles");
+    
+    for (var i = 0; i < page_data.length; i++) {
+      
+      console.log("adding template");
+      page_content.innerHTML += tmpl.innerHTML;
+      
+      console.log("collecting newly made template");
+      next_post = document.getElementById('post-listing').getElementsByTagName('article')[i];
+      
+      console.log("setting title to ", page_data[i].Title);
+      next_post.getElementsByClassName('title')[0].innerHTML = page_data[i].Title;
+      next_post.getElementsByClassName('author')[0].innerHTML = page_data[i].Author;
+      next_post.getElementsByClassName('content')[0].innerHTML = page_data[i].Content;
+      
+    }
+  </script>
+    
+</html>

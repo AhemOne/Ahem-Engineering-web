@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head> 
+    <!-- page metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  </head>
+  <body>
+
+    <center>
+      <em>Loading.. please wait</em>
+      <div id="svg-canvas">
+        <object data="/assets/img/shop-anim.svg" alt="loading..."></object>
+      </div>
+    </center>
+
+    <script>
+      canvas = document.getElementById('svg-canvas');
+      polygon = canvas.getElementsByTagName('polygon');
+
+      function redraw() {
+        var poly_n = polygon.length;
+        var offset_x = canvas.offsetWidth/2;
+        var offset_y = canvas.offsetHeight/2;
+        start_x = [-1, 0, 1, 0];
+        start_y = [0, -1, 0, 1];
+
+        for(var poly = 0; poly < poly_n; poly++) {
+          current_polygon = polygon[poly];
+          var points_n = current_polygon.points.length;
+
+          for (var point = 0; point < points_n; point++) {
+            var time = performance.now()/3;
+            x = offset_x + start_x[point] * 5 + 50 * Math.sin((poly/5 + time/13)*0.1) + 50 * Math.sin((poly/5 + time/5)*0.1);
+            y = offset_y + start_y[point] * 5 + 50 * Math.cos((poly/5 + time/11)*0.1) + 50 * Math.cos((poly/3 + time/17)*0.1);
+
+            current_polygon.points[point].x = x;
+            current_polygon.points[point].y = y;
+          }
+        }
+      }
+
+      interval = setInterval(redraw, 40);
+
+
+
+    </script>
+
+
+  </body>
+</html>
