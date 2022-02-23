@@ -1,69 +1,172 @@
+@font-face {
+  font-family: "Gruppo";
+  src: url("font/Gruppo-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: "Alex-Brush";
+  src: url("font/AlexBrush-Regular.ttf") format('truetype');
+}
+
 body {
-  background-color: lightblue;
+  background-color: #607f30;
+  margin: 0px;
 }
 
-page-banner {
-  background: lightBlue;
-  animation: fade-page-banner 5s infinite;
-}
-  
-@keyframes fade-page-banner {
-  from {background-color: lightBlue;}
-  to {background-color: white;}
-}
-
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
-
-/* Sidebar links */
-.sidebar a {
-  display: block;
+body a {
   color: black;
-  padding: 16px;
   text-decoration: none;
+} 
+
+body a:hover {
+  color: darkgreen;
 }
 
-/* Active/current link */
-.sidebar a.active {
-  background-color: #04AA6D;
-  color: white;
+header {
+  position: floating;
 }
 
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+table.page {
+  width: 100%;
 }
 
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-div.contents {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
+table.page th {
+  padding: 0px;
 }
 
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
+a.logo {
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
+a.logo:link,
+a.logo:visited,
+a.logo:active {
+  color: black;
+}
+
+a.logo:hover {
+  color: yellow;
+}
+
+div.logo-ahem {
+  font-family: "Alex-Brush";
+  font-size: 80px;
+  height: 100px;
+  letter-spacing: 0px;
+}
+
+div.logo-engineering {
+  position: relative;
+  font-family: "Gruppo";
+  font-size: 20px;
+  letter-spacing: 0px;
+}
+
+th.header-left {
+  width: 50%;
+  text-align: left;
+}
+
+th.header-center {;
+  text-align: center;
+}
+th.header-right {
+  width: 50%;
+  text-align: right;
+}
+
+.header-container {
+  width: 100%;
+}
+
+.header-lower {
+  height: 25%; 
+  padding: 0px;
+}
+
+.icon-image {
+  height: 45px;
+  width: 45px;
+  margin: 15px;
+  border-radius: 10px;
+  border-color: #6f8d40;
+  border-style: outset;
+  transition: all 0.3s ease
+}
+
+.icon-image:hover {
+  background-color: #6f8d40;
+}
+
+.icon-image:active {
+  border-style: inset; 
+  background-color: #4f5d20;
+}
+
+.header-tab {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-width: 12px;
+  
+  border-color: lightgray;
+  border-style: solid;
+  
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  
+  background-color: lightgray;
+  
+  font-family: "Gruppo";
+  transition: all 0.3s ease;
+}
+
+.header-tab.header-tab-active {
+  border-color: white;
+  background-color: white;
+}
+
+.header-tab:hover {
+  background-color: gray;
+  border-color: gray;
+}
+
+.header-tab:active {
+  background-color: darkgreen;
+  border-color: darkgreen;
+}
+
+main {
+  text-align: center;
+  
+  background-color: white;
+  
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  
+  border-width: 0px;
+  border-radius: 10px;
+}
+
+main iframe {  
+  width:100%;
+  height:100%;
+
+  border-width: 0px;
+}
+
+footer {
+  font-family: "Gruppo";
+}
+
+footer a:hover {
+  color: yellow;
+  transition: all 0.3s ease;
+}
+
+.variable {
+  visibility: hidden;
 }
